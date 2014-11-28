@@ -6,7 +6,6 @@ class icinga2::serverconf() {
     recurse => true,
     purge   => true,
     force   => true,
-    require => Package['icinga2'],
   }
 
   file { '/etc/icinga2/conf.d/puppet/hosts/':
