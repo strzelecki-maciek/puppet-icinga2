@@ -3,8 +3,6 @@ class icinga2::host (
   $address6 = $::ipaddress6,
   $host_template = hiera('icinga2::host_type', 'generic-host'),
 ){
-
-  include icinga2::nrpe
   $ensure = present
 
   @@icinga2::object::host{ $::fqdn:
