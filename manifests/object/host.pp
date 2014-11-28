@@ -12,7 +12,7 @@ define icinga2::object::host (
 
   file { "/etc/icinga2/conf.d/puppet/hosts/${name}.conf":
     ensure  => 'present',
-    mode:   => '0644',
+    mode    => '0644',
     content => template('icinga2/host.conf.erb'),
   }
 }
