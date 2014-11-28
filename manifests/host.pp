@@ -1,6 +1,7 @@
 class icinga2::host (
   $address = $::ipaddress,
   $address6 = $::ipaddress6,
+  $host_template => hiera('icinga2::host_type', 'generic-host'),
 ){
 
   include icinga2::nrpe
@@ -11,7 +12,7 @@ class icinga2::host (
     address6     => $address6,
     ca_env       => $::ca_env,
     ca_hostgroup => $::hostgroup,
-    ca_host_type => hiera('icinga2::host_type', 'generic-host'),
+    $import      => $host_template
   }
   $defaults = { host_name => $::fqdn }
 }
