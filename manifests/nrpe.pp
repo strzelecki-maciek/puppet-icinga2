@@ -19,6 +19,6 @@ class icinga2::nrpe (
   }
 
   if $nrpe_commands {
-    create_resources('icinga2::nrpe::command', $nrpe_commands)
+    create_resources('icinga2::command', $nrpe_commands)
   }
 }
