@@ -4,7 +4,7 @@ class icinga2::nrpe (
   $nrpe_commands = hiera_hash('icinga2::nrpe:commands', undef),
 ){
 
-  package { ['libnagios-plugin-perl', 'nagios-nrpe-server', 'nagios-plugins-basic', 'nagios-plugins-common', 'nagios-plugins-contrib', 'nagios-plugins-standard', 'nagios-nrpe-server']:
+  package { ['libnagios-plugin-perl', 'nagios-nrpe-server', 'nagios-plugins-basic', 'nagios-plugins-common', 'nagios-plugins-contrib', 'nagios-plugins-standard']:
       ensure  => 'latest',
   } ->
 
