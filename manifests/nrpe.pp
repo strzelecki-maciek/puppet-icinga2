@@ -1,7 +1,7 @@
 class icinga2::nrpe (
   $nrpe_user = hiera('icinga2::nrpe::user', 'nagios'),
   $allowed_hosts = hiera('icinga2::nrpe::allowed_hosts', '127.0.0.1'),
-  $nrpe_commands = hiera_hash('icinga2::nrpe:commands', undef),
+  $nrpe_commands = hiera_hash('icinga2::nrpe:commands'),
 ){
 
   package { ['libnagios-plugin-perl', 'nagios-nrpe-server', 'nagios-plugins-basic', 'nagios-plugins-common', 'nagios-plugins-contrib', 'nagios-plugins-standard']:
@@ -18,7 +18,5 @@ class icinga2::nrpe (
     ensure     => 'running',
   }
 
-  if $nrpe_commands {
-    create_resources('icinga2::nrpe::command', $nrpe_commands)
-  }
+  create_resources('icinga2::nrpe::command', $nrpe_commands)
 }
