@@ -12,7 +12,7 @@ class icinga2::host (
     address6     => $address6,
     ca_env       => $::ca_env,
     ca_hostgroup => $::hostgroup,
-    $import      => $host_template
+    import       => $host_template
   }
   $defaults = { host_name => $::fqdn }
 }
