@@ -9,8 +9,8 @@ class icinga2::nrpe (
   } ->
 
   file { "/etc/nagios/nrpe.cfg":
-    ensure: 'present'
-    mode: '0644'
+    ensure  => 'present',
+    mode    => '0644',
     content => template('icinga2/nrpe.cfg.erb'),
   } ~>
 
