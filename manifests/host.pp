@@ -1,7 +1,7 @@
 class icinga2::host (
   $address = $::ipaddress,
   $address6 = $::ipaddress6,
-  $host_template => hiera('icinga2::host_type', 'generic-host'),
+  $host_template = hiera('icinga2::host_type', 'generic-host'),
 ){
 
   include icinga2::nrpe
