@@ -8,6 +8,10 @@ class icinga2::nrpe (
       ensure  => 'latest',
   } ->
 
+  if $nrpe_commands {
+    create_resources('icinga2::command', $nrpe_commands)
+  } ->
+
   file { "/etc/nagios/nrpe.cfg":
     ensure  => 'present',
     mode    => '0644',
@@ -16,9 +20,5 @@ class icinga2::nrpe (
 
   service { 'nagios-nrpe-server':
     ensure     => 'running',
-  }
-
-  if $nrpe_commands {
-    create_resources('icinga2::command', $nrpe_commands)
   }
 }
