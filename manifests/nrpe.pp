@@ -11,11 +11,6 @@ class icinga2::nrpe (
              'nagios-plugins-contrib',
              'nagios-plugins-standard']:
     ensure  => 'latest',
-  }
-
-  if $nrpe_commands {
-    create_resources('icinga2::command', $nrpe_commands),
-    require => Package['nagios-nrpe-server'],
   } ->
 
   file { "/etc/nagios/nrpe.cfg":
@@ -27,4 +22,9 @@ class icinga2::nrpe (
   service { 'nagios-nrpe-server':
     ensure     => 'running',
   }
+
+  if $nrpe_commands {
+    create_resources('icinga2::command', $nrpe_commands),
+  }
+
 }

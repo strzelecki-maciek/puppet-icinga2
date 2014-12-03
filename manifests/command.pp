@@ -10,6 +10,7 @@ define icinga2::command (
     mode    => '0644',
     owner   => 'root',
     content => template('icinga2/command.cfg.erb'),
+    require => Package['nagios-nrpe-server'],
     notify  => Service['nagios-nrpe-server'],
   }
 }
